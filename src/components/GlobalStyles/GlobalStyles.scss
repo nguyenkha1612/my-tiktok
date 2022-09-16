@@ -4,6 +4,7 @@
 :root {
     --primary: #fe2c55;
     --black: #000;
+    --white: #fff;
     --text-color: #333;
 
     //Default layout
@@ -25,6 +26,7 @@ body {
     font-family: ibm-plex-sans, sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
+    letter-spacing: 0.1rem;
     text-rendering: optimizeSpeed;
 }
 
@@ -34,6 +36,7 @@ input,
     //attr
     border: none;
     outline: none;
+    background-color: var(--white);
 }
 
 a[href] {
