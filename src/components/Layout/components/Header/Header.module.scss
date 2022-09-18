@@ -63,6 +63,8 @@
                 position: absolute;
                 right: calc(var(--search-button-width) + 1.6rem);
                 top: 50%;
+                font-size: 2rem;
+                background-color: transparent;
                 transform: translateY(-50%);
                 color: rgba(22, 24, 35, 0.34);
             }
@@ -103,9 +105,35 @@
     }
 }
 
+// actions
+.actions {
+    display: flex;
+    align-items: center;
+}
+
 .more-btn {
     font-size: 2rem;
     margin-left: 28px;
     padding: 4px 8px;
+    cursor: pointer;
+}
+
+.action-btn {
+    display: flex;
+    background-color: transparent;
+    font-size: 2.8rem;
+    padding: 4px;
+
+    + .action-btn {
+        margin-left: 8px;
+    }
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    margin-left: 12px;
+    object-fit: cover;
+    border-radius: 50%;
     cursor: pointer;
 }
