@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import className from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -22,13 +22,56 @@ import Menu from '~/components/Popper/Menu';
 const cx = className.bind(styles);
 
 const MENU_ITEMS = [
-    { icon: <FontAwesomeIcon icon={faEarthAsia} />, title: 'English' },
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+
+                    code: 'jp',
+                    title: '日本',
+                },
+                {
+                    type: 'language',
+                    code: 'chi',
+                    title: '中国人',
+                },
+            ],
+        },
+    },
     { icon: <FontAwesomeIcon icon={faCircleQuestion} />, title: 'Feedback and help', to: '/feedback' },
     { icon: <FontAwesomeIcon icon={faKeyboard} />, title: 'Keyboard shortcuts' },
 ];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
+
+    useEffect(() => {
+        setSearchResult([]);
+    }, []);
+
+    const handleMenuCHange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'language':
+                break;
+            default:
+                console.log(menuItem);
+        }
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -67,7 +110,7 @@ function Header() {
                     <Button text>Upload</Button>
                     <Button primary>Log in</Button>
 
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuCHange}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
