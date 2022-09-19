@@ -21,6 +21,7 @@ import 'tippy.js/dist/tippy.css'; // optional
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import Image from '~/components/Image';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Menu from '~/components/Popper/Menu';
 import styles from './Header.module.scss';
@@ -129,9 +130,11 @@ function Header() {
                                     <AiOutlineCloudUpload />
                                 </button>
                             </Tippy>
-                            <button className={cx('action-btn')}>
-                                <AiOutlineMessage />
-                            </button>
+                            <Tippy delay="200" content="Message" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <AiOutlineMessage />
+                                </button>
+                            </Tippy>
                         </>
                     ) : (
                         <>
@@ -142,13 +145,14 @@ function Header() {
 
                     <Menu items={currentUser ? USER_MENU : MENU_ITEMS} onChange={handleMenuCHange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src={
-                                    'https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/297990921_1545221645936165_4467323158470599965_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=4b7h4Ar8AF8AX8nQWsl&_nc_ht=scontent.fsgn5-12.fna&oh=00_AT8f3LTBp8DxATuFfqjeOLDcz83lQzTAxKJ3W4D4Z37LNw&oe=6328FAAF'
+                                    'ahttps://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/297990921_1545221645936165_4467323158470599965_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=4b7h4Ar8AF8AX8nQWsl&_nc_ht=scontent.fsgn5-12.fna&oh=00_AT8f3LTBp8DxATuFfqjeOLDcz83lQzTAxKJ3W4D4Z37LNw&oe=6328FAAF'
                                 }
                                 alt={'Nguyen Van A'}
-                            ></img>
+                                fallback="https://scontent.fsgn5-2.fna.fbcdn.net/v/t39.30808-6/306004139_645432850501768_8126873536246337482_n.jpg?stp=cp6_dst-jpg&_nc_cat=105&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=21Y-U5wlQ7AAX8-n7Mh&tn=GllT5Vg-glcoEbto&_nc_ht=scontent.fsgn5-2.fna&oh=00_AT8XIm3_PiVljhqFdEYdnoIqk-XeA_SkUdQ-YSGVQV4S8Q&oe=632D1DE3"
+                            />
                         ) : (
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisVertical} />
