@@ -7,6 +7,7 @@ import { BiMessageAltMinus, BiPaperPlane } from 'react-icons/bi';
 import { BsCoin, BsKeyboard } from 'react-icons/bs';
 import { IoIosLogOut } from 'react-icons/io';
 import { IoEarth } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css'; // optional
 
 import images from '~/assets/images';
@@ -76,9 +77,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={'/'} className={cx('logo')}>
                     <img src={images.logo} alt="Tiktok" />
-                </div>
+                </Link>
 
                 <Search />
 
