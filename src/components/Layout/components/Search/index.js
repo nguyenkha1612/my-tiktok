@@ -9,6 +9,7 @@ import 'tippy.js/dist/tippy.css'; // optional
 import AccountItem from '~/components/AccountItem';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Search.module.scss';
+import { useDebounce } from '~/hooks';
 
 const cx = className.bind(styles);
 
@@ -17,26 +18,28 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
+    const debounced = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([]);
             return;
         }
 
         setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
             .then((res) => res.json())
             .then((res) => {
                 setSearchResult(res.data);
                 setLoading(false);
+                console.log(res.data);
             })
             .catch(() => {
                 setLoading(false);
             });
-    }, [searchValue]);
+    }, [debounced]);
 
     const handleClear = () => {
         setSearchValue('');
