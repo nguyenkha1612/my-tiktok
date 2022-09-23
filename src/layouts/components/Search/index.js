@@ -6,7 +6,7 @@ import { BsSearch } from 'react-icons/bs';
 import { HiOutlineX } from 'react-icons/hi';
 import 'tippy.js/dist/tippy.css'; // optional
 
-import * as searchServices from '~/apiServices/searchServices';
+import * as searchServices from '~/services/searchService';
 import AccountItem from '~/components/AccountItem';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { useDebounce } from '~/hooks';
