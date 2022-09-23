@@ -56,8 +56,15 @@ const MENU_ITEMS = [
     { icon: <BsKeyboard />, title: 'Keyboard shortcuts' },
 ];
 
+const USER_MENU = [
+    { icon: <AiOutlineUser />, title: 'View profile', to: '/user' },
+    { icon: <BsCoin />, title: 'Get coins', to: '/coin' },
+    { icon: <AiOutlineSetting />, title: 'Settings', to: '/settings' },
+    { icon: <IoIosLogOut />, title: 'Logout', to: '/logout', separate: true },
+];
+
 function Header() {
-    const currentUser = true;
+    const currentUser = false;
 
     const handleMenuCHange = (menuItem) => {
         switch (menuItem.type) {
@@ -67,13 +74,6 @@ function Header() {
                 console.log(menuItem);
         }
     };
-
-    const USER_MENU = [
-        { icon: <AiOutlineUser />, title: 'View profile', to: '/user' },
-        { icon: <BsCoin />, title: 'Get coins', to: '/coin' },
-        { icon: <AiOutlineSetting />, title: 'Settings', to: '/settings' },
-        { icon: <IoIosLogOut />, title: 'Logout', to: '/logout', separate: true },
-    ];
 
     return (
         <header className={cx('wrapper')}>
