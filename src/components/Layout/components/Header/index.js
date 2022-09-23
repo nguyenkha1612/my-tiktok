@@ -16,6 +16,7 @@ import Image from '~/components/Image';
 import Search from '~/components/Layout/components/Search';
 import Menu from '~/components/Popper/Menu';
 import styles from './Header.module.scss';
+import routesConfig from '~/config/routes';
 
 const cx = className.bind(styles);
 
@@ -56,7 +57,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const currentUser = false;
+    const currentUser = true;
 
     const handleMenuCHange = (menuItem) => {
         switch (menuItem.type) {
@@ -77,7 +78,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={'/'} className={cx('logo')}>
+                <Link to={routesConfig.home} className={cx('logo')}>
                     <img src={images.logo} alt="Tiktok" />
                 </Link>
 
